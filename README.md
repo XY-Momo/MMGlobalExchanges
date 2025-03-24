@@ -25,6 +25,11 @@ MMGlobalExchanges
 ==
 QQ:1756784800
 
+广告
+==
+本人制作的RPG服务器，目前还在内测中 QQ群:883030156  
+B站账号 https://space.bilibili.com/3546615277161153
+
 演示
 ==
 市场(黑市)主界面
