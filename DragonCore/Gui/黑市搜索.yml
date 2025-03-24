@@ -1,0 +1,34 @@
+match: "黑市搜索界面"
+Functions:
+  open: |-
+##-----------------界面设置-----------------
+背景:
+  type: "图片"
+  x: "0"
+  y: "0"
+  width: "方法.取屏幕宽度"
+  height: "方法.取屏幕高度"
+  texture: "0,0,0,200"
+文本:
+  type: "文本框"
+  x: "方法.取屏幕宽度/2"
+  y: "方法.取屏幕高度/2"
+  width: "局部变量.当前组件.height*10"
+  height: "方法.取屏幕高度*0.05"
+  length: 128
+  drawBackground: true
+  text: ""
+  focused: false
+  center: true
+确认:
+  type: "图片"
+  x: "文本.x"
+  y: "文本.y + 文本.height*1.1"
+  width: "局部变量.当前组件.height*3"
+  height: "方法.取屏幕高度*0.04"
+  texture: "0,0,0"
+  text: "确认"
+  actions:
+    click: |-
+      方法.发包('mmglobalexchanges', 'blacksearch', 文本.text);
+      方法.模拟点击槽位('container_1', 0, 'PICKUP', 1);
