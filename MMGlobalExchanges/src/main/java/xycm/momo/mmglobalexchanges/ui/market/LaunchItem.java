@@ -270,7 +270,7 @@ public class LaunchItem extends Chest {
         ItemMeta meta = item.getItemMeta();
         meta.setDisplayName(String.valueOf(price));
         List<String> lore = meta.hasLore() ? meta.getLore() : new ArrayList<>();
-        lore.add((int)(Math.round(MMGlobalExchanges.instance.getConfig().getDouble("tax_rate") * 100)) + "%");
+        lore.add("税率: " + (int)(Math.round(MMGlobalExchanges.instance.getConfig().getDouble("tax_rate") * 100)) + "%");
         meta.setLore(lore);
         item.setItemMeta(meta);
         this.addItem(14, item);

@@ -263,8 +263,8 @@ public class BlackMarket extends Chest {
         ItemMeta itemMeta = item.getItemMeta();
         itemMeta.setDisplayName(getInfo(player) == null ? " " : getInfo(player));
         List<String> lore = itemMeta.hasLore() ? itemMeta.getLore() : new ArrayList<>();
-        lore.add(String.valueOf(getPage(player)));
-        lore.add(String.valueOf((MMGlobalExchanges.marketFile.getSize(player) - 1) / MMGlobalExchanges.instance.getConfig().getInt("market_max") + 1));
+        lore.add("当前页数: " + getPage(player));
+        lore.add("总页数: " + ((MMGlobalExchanges.marketFile.getSize(player) - 1) / MMGlobalExchanges.instance.getConfig().getInt("market_max") + 1));
         itemMeta.setLore(lore);
         item.setItemMeta(itemMeta);
         addItem(52, item);
