@@ -53,7 +53,22 @@ QQ:1756784800
 市场(黑市)搜索界面
 --
 此界面配合龙核界面使用(文件中有一份简单的默认配置)，演示如下图  
+不输入字符点确定则是不检索(由于没有做本地化物品名对应Material字典，所以原版物品名无法直接搜名字 比如草方块->GRASS)  
 
 ![image](https://github.com/user-attachments/assets/2bcd31ae-291f-4cc7-9729-4e27aaa69a82)
 ![image](https://github.com/user-attachments/assets/9d43853e-c44c-48fe-a11d-28e92c3a1ec1)
+![image](https://github.com/user-attachments/assets/b02e3b8a-d7c7-4a3c-ab91-734610a01dfa)
+![image](https://github.com/user-attachments/assets/ed13897b-8a52-4a81-8790-14a3822365d3)
 
+市场(黑市)个人信息界面
+--
+上面从左到右分别是购买记录、出售记录、购买信息、出售信息、上架管理、出售收取  
+
+![image](https://github.com/user-attachments/assets/d742609c-c87c-4197-877f-947dd4108f8a)
+
+市场(黑市)上架管理界面
+--
+上面显示正在上架的物品点击后可以取消上架
+左下角也可以上架，屏障是返回，箭是翻页、纸是信息  
+
+![image](https://github.com/user-attachments/assets/80b3b1bb-fea7-4256-bd6d-e21858a0910f)
