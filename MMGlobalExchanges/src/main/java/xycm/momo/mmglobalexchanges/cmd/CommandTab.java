@@ -7,14 +7,14 @@ import org.bukkit.command.TabExecutor;
 import org.bukkit.entity.Player;
 import org.bukkit.inventory.ItemStack;
 import xycm.momo.mmglobalexchanges.MMGlobalExchanges;
-import xycm.momo.mmglobalexchanges.event.blackmarket.BlackLaunchRecordListener;
-import xycm.momo.mmglobalexchanges.event.blackmarket.BlackMailListener;
-import xycm.momo.mmglobalexchanges.event.blackmarket.BlackPurchaseRecordListener;
-import xycm.momo.mmglobalexchanges.event.blackmarket.BlackSellRecordListener;
-import xycm.momo.mmglobalexchanges.event.market.LaunchRecordListener;
-import xycm.momo.mmglobalexchanges.event.market.MailListener;
-import xycm.momo.mmglobalexchanges.event.market.PurchaseRecordListener;
-import xycm.momo.mmglobalexchanges.event.market.SellRecordListener;
+import xycm.momo.mmglobalexchanges.listener.blackmarket.BlackLaunchRecordListener;
+import xycm.momo.mmglobalexchanges.listener.blackmarket.BlackMailListener;
+import xycm.momo.mmglobalexchanges.listener.blackmarket.BlackPurchaseRecordListener;
+import xycm.momo.mmglobalexchanges.listener.blackmarket.BlackSellRecordListener;
+import xycm.momo.mmglobalexchanges.listener.market.LaunchRecordListener;
+import xycm.momo.mmglobalexchanges.listener.market.MailListener;
+import xycm.momo.mmglobalexchanges.listener.market.PurchaseRecordListener;
+import xycm.momo.mmglobalexchanges.listener.market.SellRecordListener;
 import xycm.momo.mmglobalexchanges.file.History;
 
 import java.util.ArrayList;
@@ -31,7 +31,7 @@ public class CommandTab implements TabExecutor {
                                   "打开黑市相关界面/mmge open blackmarket {选填具体名称}";
 
     public final String getTip = "MMGlobalExchanges指令用法:\n" +
-                                 "获取市场商品/mmge get market <ID>>\n" +
+                                 "获取市场商品/mmge get market <ID>\n" +
                                  "获取黑市商品/mmge get blackmarket <ID>\n";
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (args.length == 0) {
