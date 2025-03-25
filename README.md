@@ -32,6 +32,38 @@ MMGlobalExchanges
 本人参与制作的RPG服务器，目前还在内测中 QQ群:883030156  
 B站账号 https://space.bilibili.com/3546615277161153
 
+指令格式
+==
+重载配置文件(OP，CONSOLE)
+
+    /mmge reload
+
+打开市场相关界面  
+
+    /mmge open market {选填具体名称，不填为市场}
+                      market(市场)
+                      purchase_record(市场购买记录)
+                      sell_record(市场出售记录)
+                      launch_record(市场上架管理)
+                      mail(市场收取界面)
+
+打开黑市相关界面
+
+    /mmge open blackmarket {选填具体名称，不填为黑市}
+                           blackmarket(黑市)
+                           purchase_record(黑市购买记录)
+                           sell_record(黑市出售记录)
+                           launch_record(黑市上架管理)
+                           mail(黑市收取界面)
+
+获取市场历史记录物品(OP)
+
+    /mmge get market <ID>
+
+获取黑市历史记录物品(OP)
+
+    /mmge get blackmarket <ID>
+
 演示
 ==
 市场(黑市)主界面
