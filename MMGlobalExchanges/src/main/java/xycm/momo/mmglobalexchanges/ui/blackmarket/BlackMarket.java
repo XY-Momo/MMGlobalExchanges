@@ -151,9 +151,17 @@ public class BlackMarket extends Chest {
                     itemStack = item.getValue();
                     ItemMeta itemMeta = itemStack.getItemMeta();
                     List<String> lore = itemMeta.hasLore() ? itemMeta.getLore() : new ArrayList<>();
-                    // 将lore索引7之后的lore信息模糊
-                    for (int i = MMGlobalExchanges.instance.getConfig().getInt("black_market_hidden_index"); i < lore.size(); i++) {
-                        lore.set(i, lore.get(i).split(":")[0] + ": ***");
+                    // 将lore索引指定的lore信息模糊
+                    List<Integer> hid_list = MMGlobalExchanges.instance.getConfig().getIntegerList("black_market_hidden_index");
+                    int first_hid = hid_list.get(0);
+                    if (lore.size() > first_hid) {
+                        for (int i : MMGlobalExchanges.instance.getConfig().getIntegerList("black_market_hidden_index")) {
+                            StringBuilder result = new StringBuilder();
+                            for (int r_i = 0; r_i < lore.get(r_i).length(); r_i++) {
+                                result.append("*");
+                            }
+                            lore.set(i, result.toString());
+                        }
                     }
                     lore.add("§f商品唯一ID: " + id);
                     lore.add("§f价格: " + price + " 时息");
