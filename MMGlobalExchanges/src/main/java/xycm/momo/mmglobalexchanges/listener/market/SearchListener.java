@@ -47,9 +47,27 @@ public class SearchListener implements Listener {
                 }
                 MMGlobalExchanges.market.open(player);
             } else {
-                if (slot == 46) {
-                    MMGlobalExchanges.market.setFilter(player, null);
-                    MMGlobalExchanges.market.open(player);
+                switch (slot) {
+                    case 46:
+                        MMGlobalExchanges.market.setFilter(player, null);
+                        MMGlobalExchanges.market.open(player);
+                        break;
+                    case 47:
+                        MMGlobalExchanges.search.setPage(player, 1);
+                        MMGlobalExchanges.search.open(player);
+                        break;
+                    case 48:
+                        MMGlobalExchanges.search.setPage(player, MMGlobalExchanges.search.getPage(player) - 1);
+                        MMGlobalExchanges.search.open(player);
+                        break;
+                    case 50:
+                        MMGlobalExchanges.search.setPage(player, MMGlobalExchanges.search.getPage(player) + 1);
+                        MMGlobalExchanges.search.open(player);
+                        break;
+                    case 51:
+                        MMGlobalExchanges.search.setPage(player, (MMGlobalExchanges.search.getSize() - 1) / MMGlobalExchanges.instance.getConfig().getInt("market_search_max") + 1);
+                        MMGlobalExchanges.search.open(player);
+                        break;
                 }
             }
         }

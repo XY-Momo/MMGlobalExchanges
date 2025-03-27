@@ -36,10 +36,11 @@ public class CommandTab implements TabExecutor {
                                  "获取市场商品/mmge get market <ID>\n" +
                                  "获取黑市商品/mmge get blackmarket <ID>\n";
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
-        if (!sender.isOp()) { return true;}
         if (args.length == 0) {
+            if (!sender.isOp()) { return true;}
             sender.sendMessage(tip);
         } else if (args.length == 1 && !args[0].isEmpty()) {
+            if (!sender.isOp()) { return true;}
             if (args[0].equalsIgnoreCase("open")) {
                 sender.sendMessage(openTip);
             } else if (args[0].equalsIgnoreCase("get")) {
@@ -75,8 +76,8 @@ public class CommandTab implements TabExecutor {
                             MMGlobalExchanges.market.open((Player) sender);
                             break;
                         case "search":
-                            Search search = new Search("市场搜索");
-                            search.open((Player) sender);
+                            MMGlobalExchanges.search.setPage((Player) sender, 1);
+                            MMGlobalExchanges.search.open((Player) sender);
                             break;
                         case "purchase_record":
                             PurchaseRecordListener.purchaseReturnInfo.put(sender.getName(), "市场");
@@ -98,6 +99,10 @@ public class CommandTab implements TabExecutor {
                             MMGlobalExchanges.mail.setPage((Player) sender, 1);
                             MMGlobalExchanges.mail.open((Player) sender);
                             break;
+                        default:
+                            if (!sender.isOp()) { return true;}
+                            sender.sendMessage(openTip);
+                            break;
                     }
                 } else if (args[1].equalsIgnoreCase("blackmarket")) {
                     switch (args[2].toLowerCase()) {
@@ -106,8 +111,8 @@ public class CommandTab implements TabExecutor {
                             MMGlobalExchanges.blackMarket.open((Player) sender);
                             break;
                         case "search":
-                            BlackSearch search = new BlackSearch("黑市搜索");
-                            search.open((Player) sender);
+                            MMGlobalExchanges.blackMarket.setPage((Player) sender, 1);
+                            MMGlobalExchanges.blackMarket.open((Player) sender);
                         case "purchase_record":
                             BlackPurchaseRecordListener.purchaseReturnInfo.put(sender.getName(), "黑市");
                             MMGlobalExchanges.blackPurchaseRecord.setPage((Player) sender, 1);
@@ -129,11 +134,13 @@ public class CommandTab implements TabExecutor {
                             MMGlobalExchanges.blackMail.open((Player) sender);
                             break;
                         default:
+                            if (!sender.isOp()) { return true;}
                             sender.sendMessage(openTip);
                             break;
                     }
                 }
             } else if (args[0].equalsIgnoreCase("get")) {
+                if (!sender.isOp()) { return true;}
                 if (sender.isOp() || sender instanceof ConsoleCommandSender) {
                     switch (args[1].toLowerCase()) {
                         case "market":
@@ -164,9 +171,11 @@ public class CommandTab implements TabExecutor {
                     }
                 }
             } else {
+                if (!sender.isOp()) { return true;}
                 sender.sendMessage(tip);
             }
         } else {
+            if (!sender.isOp()) { return true;}
             sender.sendMessage(tip);
         }
         return true;

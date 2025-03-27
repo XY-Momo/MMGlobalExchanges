@@ -23,6 +23,7 @@ public final class MMGlobalExchanges extends JavaPlugin {
     // 市场相关静态变量
     public static MarketFile marketFile;
     public static Market market;
+    public static xycm.momo.mmglobalexchanges.ui.market.Search search;
     public static Map<String, LaunchItem> launchItems;
     public static Map<String, Map<Integer, Integer>> purchase;
     public static Map<String, Integer> delist;
@@ -33,6 +34,7 @@ public final class MMGlobalExchanges extends JavaPlugin {
     // 黑市相关静态变量
     public static BlackMarketFile blackMarketFile;
     public static BlackMarket blackMarket;
+    public static xycm.momo.mmglobalexchanges.ui.blackmarket.BlackSearch blackSearch;
     public static Map<String, BlackLaunchItem> blackLaunchItems;
     public static Map<String, Map<Integer, Integer>> blackPurchase;
     public static Map<String, Integer> blackDelist;
@@ -49,6 +51,7 @@ public final class MMGlobalExchanges extends JavaPlugin {
         Objects.requireNonNull(Bukkit.getPluginCommand("mmge")).setTabCompleter(new CommandTab());
         marketFile = new MarketFile();
         market = new Market(getConfig().getString("market.name"));
+        search = new xycm.momo.mmglobalexchanges.ui.market.Search(getConfig().getString("market.search"));
         launchItems = new HashMap<>();
         purchase = new HashMap<>();
         delist = new HashMap<>();
@@ -70,6 +73,7 @@ public final class MMGlobalExchanges extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new Search(), this);
         blackMarketFile = new BlackMarketFile();
         blackMarket = new BlackMarket(getConfig().getString("black_market.name"));
+        blackSearch = new xycm.momo.mmglobalexchanges.ui.blackmarket.BlackSearch(getConfig().getString("black_market.search"));
         blackLaunchItems = new HashMap<>();
         blackPurchase = new HashMap<>();
         blackDelist = new HashMap<>();
@@ -94,6 +98,7 @@ public final class MMGlobalExchanges extends JavaPlugin {
 
     public void reload() {
         market.setTitle(getConfig().getString("market.name"));
+        search.setTitle(getConfig().getString("market.search"));
         purchaseRecord.setTitle(getConfig().getString("market.personal.purchase"));
         sellRecord.setTitle(getConfig().getString("market.personal.sell"));
         launchRecord.setTitle(getConfig().getString("market.personal.launch"));
@@ -101,6 +106,7 @@ public final class MMGlobalExchanges extends JavaPlugin {
 
         blackMarket.setTitle(getConfig().getString("black_market.name"));
         blackMarket.setHid(getConfig().getString("black_market_hidden_char"));
+        blackSearch.setTitle(getConfig().getString("black_market.search"));
         blackPurchaseRecord.setTitle(getConfig().getString("black_market.personal.purchase"));
         blackSellRecord.setTitle(getConfig().getString("black_market.personal.sell"));
         blackLaunchRecord.setTitle(getConfig().getString("black_market.personal.launch"));

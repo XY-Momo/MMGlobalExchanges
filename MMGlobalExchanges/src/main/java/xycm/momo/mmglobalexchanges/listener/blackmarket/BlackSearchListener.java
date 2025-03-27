@@ -47,9 +47,26 @@ public class BlackSearchListener implements Listener {
                 }
                 MMGlobalExchanges.blackMarket.open(player);
             } else {
-                if (slot == 46) {
-                    MMGlobalExchanges.blackMarket.setFilter(player, null);
-                    MMGlobalExchanges.blackMarket.open(player);
+                switch (slot) {
+                    case 46:
+                        MMGlobalExchanges.blackMarket.setFilter(player, null);
+                        MMGlobalExchanges.blackMarket.open(player);
+                    case 47:
+                        MMGlobalExchanges.blackSearch.setPage(player, 1);
+                        MMGlobalExchanges.blackSearch.open(player);
+                        break;
+                    case 48:
+                        MMGlobalExchanges.blackSearch.setPage(player, MMGlobalExchanges.blackSearch.getPage(player) - 1);
+                        MMGlobalExchanges.blackSearch.open(player);
+                        break;
+                    case 50:
+                        MMGlobalExchanges.blackSearch.setPage(player, MMGlobalExchanges.blackSearch.getPage(player) + 1);
+                        MMGlobalExchanges.blackSearch.open(player);
+                        break;
+                    case 51:
+                        MMGlobalExchanges.blackSearch.setPage(player, (MMGlobalExchanges.blackSearch.getSize() - 1) / MMGlobalExchanges.instance.getConfig().getInt("black_market_search_max") + 1);
+                        MMGlobalExchanges.blackSearch.open(player);
+                        break;
                 }
             }
         }

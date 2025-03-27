@@ -67,9 +67,8 @@ public class BlackMarketListener implements Listener {
                     selectItem.open(player);
                     break;
                 case 46:
-                    BlackSearch search = new BlackSearch(MMGlobalExchanges.instance.getConfig().getString("black_market.search"));
-                    search.setPage(player, 1);
-                    search.open(player);
+                    MMGlobalExchanges.blackMarket.setPage(player, 1);
+                    MMGlobalExchanges.blackMarket.open(player);
                     break;
                 case 47:
                     blackMarket.setPage(player, 1);

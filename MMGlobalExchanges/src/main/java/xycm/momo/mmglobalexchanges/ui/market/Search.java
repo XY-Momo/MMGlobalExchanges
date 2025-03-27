@@ -58,6 +58,14 @@ public class Search extends Chest {
             }
         }
         this.addReturn();
+        this.addInfo(player);
+    }
+
+    /**
+     * 获取筛选后物品的数量
+     */
+    public int getSize() {
+        return size;
     }
 
     /**
@@ -109,7 +117,7 @@ public class Search extends Chest {
                 ItemMeta itemMeta = itemStack.getItemMeta();
                 itemMeta.addItemFlags(ItemFlag.HIDE_ATTRIBUTES);
                 List<String> lores = new ArrayList<>();
-                lores.add("§f此类物品出现了 " + amount + " 次");
+                lores.add("§f此类物品出现次数: " + amount);
                 if (!Objects.equals(name, "")) {
                     itemMeta.setDisplayName(name);
                 }
@@ -168,6 +176,20 @@ public class Search extends Chest {
         itemMeta.setDisplayName(getTitle() + "最后一页");
         item.setItemMeta(itemMeta);
         addItem(51, item);
+    }
+
+    /* 提示信息 */
+    private void addInfo(Player player) {
+        ItemStack item = new ItemStack(Material.PAPER);
+        item.setAmount(1);
+        ItemMeta itemMeta = item.getItemMeta();
+        itemMeta.setDisplayName(" ");
+        List<String> lore = itemMeta.hasLore() ? itemMeta.getLore() : new ArrayList<>();
+        lore.add("当前页数: " + getPage(player));
+        lore.add("总页数: " + ((MMGlobalExchanges.search.getSize() - 1) / MMGlobalExchanges.instance.getConfig().getInt("market_search_max") + 1));
+        itemMeta.setLore(lore);
+        item.setItemMeta(itemMeta);
+        addItem(52, item);
     }
 
 }
