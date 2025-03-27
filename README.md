@@ -42,6 +42,7 @@ B站账号 https://space.bilibili.com/3546615277161153
 
     /mmge open market {选填具体名称，不填为市场}
                       market(市场)
+                      search(市场搜索)
                       purchase_record(市场购买记录)
                       sell_record(市场出售记录)
                       launch_record(市场上架管理)
@@ -51,6 +52,7 @@ B站账号 https://space.bilibili.com/3546615277161153
 
     /mmge open blackmarket {选填具体名称，不填为黑市}
                            blackmarket(黑市)
+                           search(黑市搜索)
                            purchase_record(黑市购买记录)
                            sell_record(黑市出售记录)
                            launch_record(黑市上架管理)
