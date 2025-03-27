@@ -74,6 +74,11 @@ B站账号 https://space.bilibili.com/3546615277161153
 最下方则是功能区，从左到右分别是上架、搜索、第一页、上一页、个人信息、下一页、最后一页、信息提示、关闭  
 
 ![image](https://github.com/user-attachments/assets/dec7483a-23c5-4a97-b9a9-b94c154fac73)  
+  
+黑市的信息隐藏  
+  
+![image](https://github.com/user-attachments/assets/173a939b-9c17-4f4a-9df1-590ae6c78641)
+
 
 市场(黑市)选择上架商品界面
 --
@@ -110,7 +115,6 @@ B站账号 https://space.bilibili.com/3546615277161153
 ![image](https://github.com/user-attachments/assets/2bcd31ae-291f-4cc7-9729-4e27aaa69a82)
 ![image](https://github.com/user-attachments/assets/9d43853e-c44c-48fe-a11d-28e92c3a1ec1)  
 
------
 由于没有做本地化物品名检索，所以原版物品名无法直接搜名字 比如草方块->GRASS  
 
 ![image](https://github.com/user-attachments/assets/b02e3b8a-d7c7-4a3c-ab91-734610a01dfa)
