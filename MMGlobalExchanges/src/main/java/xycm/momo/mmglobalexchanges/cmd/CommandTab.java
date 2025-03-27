@@ -16,6 +16,8 @@ import xycm.momo.mmglobalexchanges.listener.market.MailListener;
 import xycm.momo.mmglobalexchanges.listener.market.PurchaseRecordListener;
 import xycm.momo.mmglobalexchanges.listener.market.SellRecordListener;
 import xycm.momo.mmglobalexchanges.file.History;
+import xycm.momo.mmglobalexchanges.ui.blackmarket.BlackSearch;
+import xycm.momo.mmglobalexchanges.ui.market.Search;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -34,6 +36,7 @@ public class CommandTab implements TabExecutor {
                                  "获取市场商品/mmge get market <ID>\n" +
                                  "获取黑市商品/mmge get blackmarket <ID>\n";
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
+        if (!sender.isOp()) { return true;}
         if (args.length == 0) {
             sender.sendMessage(tip);
         } else if (args.length == 1 && !args[0].isEmpty()) {
@@ -71,6 +74,10 @@ public class CommandTab implements TabExecutor {
                             MMGlobalExchanges.market.setPage((Player) sender, 1);
                             MMGlobalExchanges.market.open((Player) sender);
                             break;
+                        case "search":
+                            Search search = new Search("市场搜索");
+                            search.open((Player) sender);
+                            break;
                         case "purchase_record":
                             PurchaseRecordListener.purchaseReturnInfo.put(sender.getName(), "市场");
                             MMGlobalExchanges.purchaseRecord.setPage((Player) sender, 1);
@@ -98,6 +105,9 @@ public class CommandTab implements TabExecutor {
                             MMGlobalExchanges.blackMarket.setPage((Player) sender, 1);
                             MMGlobalExchanges.blackMarket.open((Player) sender);
                             break;
+                        case "search":
+                            BlackSearch search = new BlackSearch("黑市搜索");
+                            search.open((Player) sender);
                         case "purchase_record":
                             BlackPurchaseRecordListener.purchaseReturnInfo.put(sender.getName(), "黑市");
                             MMGlobalExchanges.blackPurchaseRecord.setPage((Player) sender, 1);
@@ -163,6 +173,7 @@ public class CommandTab implements TabExecutor {
     }
 
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
+        if (!sender.isOp()) { return null;}
         List<String> possibleCompletions = new ArrayList<>();
         List<String> Completions = new ArrayList<>();
         if (args.length == 1) {
@@ -177,12 +188,18 @@ public class CommandTab implements TabExecutor {
         } else if (args.length == 3) {
             if (args[1].equalsIgnoreCase("market")) {
                 possibleCompletions.add("market");
+                possibleCompletions.add("search");
                 possibleCompletions.add("purchase_record");
                 possibleCompletions.add("sell_record");
                 possibleCompletions.add("launch_record");
                 possibleCompletions.add("mail");
             } else if (args[1].equalsIgnoreCase("blackmarket")) {
                 possibleCompletions.add("blackmarket");
+                possibleCompletions.add("search");
+                possibleCompletions.add("purchase_record");
+                possibleCompletions.add("sell_record");
+                possibleCompletions.add("launch_record");
+                possibleCompletions.add("mail");
             }
         }
         for (String Completion : possibleCompletions) {

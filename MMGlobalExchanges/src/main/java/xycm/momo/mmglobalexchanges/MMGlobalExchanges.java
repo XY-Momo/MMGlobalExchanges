@@ -100,6 +100,7 @@ public final class MMGlobalExchanges extends JavaPlugin {
         mail.setTitle(getConfig().getString("market.personal.mail"));
 
         blackMarket.setTitle(getConfig().getString("black_market.name"));
+        blackMarket.setHid(getConfig().getString("black_market_hidden_char"));
         blackPurchaseRecord.setTitle(getConfig().getString("black_market.personal.purchase"));
         blackSellRecord.setTitle(getConfig().getString("black_market.personal.sell"));
         blackLaunchRecord.setTitle(getConfig().getString("black_market.personal.launch"));

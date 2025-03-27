@@ -1,8 +1,11 @@
 package xycm.momo.mmglobalexchanges.listener.blackmarket;
 
+import org.bukkit.Material;
+import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
+import org.bukkit.inventory.ItemStack;
 import xycm.momo.mmglobalexchanges.MMGlobalExchanges;
 
 /**
@@ -15,5 +18,40 @@ public class BlackSearchListener implements Listener {
             return;
         }
         event.setCancelled(true);
+
+        Player player = (Player) event.getWhoClicked();
+        ItemStack clickedItem = event.getCurrentItem();
+
+        if (clickedItem == null || clickedItem.getType() == Material.AIR) {
+            return;
+        }
+
+        int rawSlot = event.getRawSlot();
+        int inventorySize = event.getInventory().getSize();
+        if (event.getCurrentItem().getType().equals(Material.AIR)) {
+            return;
+        }
+        // 检查玩家是否从 Market 界面拿取物品
+        if (rawSlot < inventorySize) {
+
+            int slot = event.getSlot();
+            if (slot < 45) {
+                if (clickedItem.hasItemMeta()) {
+                    if (clickedItem.getItemMeta().hasDisplayName()) {
+                        MMGlobalExchanges.blackMarket.setFilter(player, clickedItem.getItemMeta().getDisplayName());
+                    } else {
+                        MMGlobalExchanges.blackMarket.setFilter(player, clickedItem.getType().name());
+                    }
+                } else {
+                    MMGlobalExchanges.blackMarket.setFilter(player, clickedItem.getType().name());
+                }
+                MMGlobalExchanges.blackMarket.open(player);
+            } else {
+                if (slot == 46) {
+                    MMGlobalExchanges.blackMarket.setFilter(player, null);
+                    MMGlobalExchanges.blackMarket.open(player);
+                }
+            }
+        }
     }
 }

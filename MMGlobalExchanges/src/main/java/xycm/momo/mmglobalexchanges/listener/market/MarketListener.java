@@ -64,6 +64,7 @@ public class MarketListener implements Listener {
                     break;
                 case 46:
                     Search search = new Search(MMGlobalExchanges.instance.getConfig().getString("market.search"));
+                    search.setPage(player, 1);
                     search.open(player);
                     break;
                 case 47:

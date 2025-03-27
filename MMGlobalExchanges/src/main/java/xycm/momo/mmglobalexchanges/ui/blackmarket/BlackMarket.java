@@ -9,10 +9,7 @@ import xycm.momo.mmglobalexchanges.MMGlobalExchanges;
 import xycm.momo.mmglobalexchanges.file.PlayerData;
 import xycm.momo.mmglobalexchanges.ui.Chest;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 /**
  * 黑市界面
@@ -25,6 +22,8 @@ public class BlackMarket extends Chest {
     private final Map<String, String> playerInfo = new HashMap<>();
     // 存储玩家搜索的过滤词
     private final Map<String, String> playerFilter = new HashMap<>();
+
+    private String hid = MMGlobalExchanges.instance.getConfig().getString("black_market_hidden_char");
 
     /**
      * 黑市界面构造函数
@@ -65,6 +64,14 @@ public class BlackMarket extends Chest {
         this.addPersonalInfo(player);
         this.addInfo(player);
         this.addCloseButton();
+    }
+
+    /**
+     * 设置隐藏信息后显示的字符
+     * @param hid 字符
+     */
+    public void setHid(String hid) {
+        this.hid = hid;
     }
 
     /**
@@ -135,6 +142,7 @@ public class BlackMarket extends Chest {
      */
     private void loadItems(Player player) {
         Map<Integer, Map<Integer, ItemStack>> items = MMGlobalExchanges.blackMarketFile.loadItems(playerFilter.get(player.getName()));
+        Random r = new Random();
         this.clearItems();
         int index = 0;
         int page = getPage(player);
@@ -153,14 +161,53 @@ public class BlackMarket extends Chest {
                     List<String> lore = itemMeta.hasLore() ? itemMeta.getLore() : new ArrayList<>();
                     // 将lore索引指定的lore信息模糊
                     List<Integer> hid_list = MMGlobalExchanges.instance.getConfig().getIntegerList("black_market_hidden_index");
-                    int first_hid = hid_list.get(0);
+                    Set<Integer> hid_set = new TreeSet<>(hid_list);
+                    int first_hid = hid_set.stream().findFirst().get();
+                    // 所写需掩盖的第一个词条是否存在
                     if (lore.size() > first_hid) {
-                        for (int i : MMGlobalExchanges.instance.getConfig().getIntegerList("black_market_hidden_index")) {
-                            StringBuilder result = new StringBuilder();
-                            for (int r_i = 0; r_i < lore.get(r_i).length(); r_i++) {
-                                result.append("*");
+                        for (int i : hid_set) {
+                            // 过滤超过索引的词条
+                            if (lore.size() > i) {
+                                String l = lore.get(i);
+                                // 是否需要分隔符
+                                if (MMGlobalExchanges.instance.getConfig().getString("black_market_hidden.split") != null) {
+                                    List<String> splits = MMGlobalExchanges.instance.getConfig().getStringList("black_market_hidden.split");
+                                    String[] split = new String[1];
+                                    String regex = "";
+                                    for (String s : splits) {
+                                        if (l.split(s).length > 1) {
+                                            split = l.split(s);
+                                            regex = s;
+                                            break;
+                                        } else {
+                                            split[0] = l;
+                                        }
+                                    }
+                                    // 是否有写需要分隔后提取的索引
+                                    if (MMGlobalExchanges.instance.getConfig().getIntegerList("black_market_hidden.index") != null) {
+                                        for (int split_i : MMGlobalExchanges.instance.getConfig().getIntegerList("black_market_hidden.index")) {
+                                            // 如果分隔后的索引不存在则跳过
+                                            if (split_i < split.length) {
+                                                StringBuilder sb = new StringBuilder();
+                                                for (int r_i = 0; r_i < split[split_i].length(); r_i++) {
+                                                    sb.append(hid.charAt(r.nextInt(hid.length())));
+                                                }
+                                                split[split_i] = sb.toString();
+                                            }
+                                        }
+                                        lore.set(i, String.join(regex, split));
+                                    } else {
+                                        lore.set(i, String.join(regex, split));
+                                    }
+                                // 不需要分隔符直接整行掩盖
+                                } else {
+                                    StringBuilder sb = new StringBuilder();
+                                    for (int r_i = 0; r_i < l.length(); r_i++) {
+                                        sb.append(hid.charAt(r.nextInt(hid.length())));
+                                    }
+                                    lore.set(i, sb.toString());
+                                }
                             }
-                            lore.set(i, result.toString());
                         }
                     }
                     lore.add("§f商品唯一ID: " + id);

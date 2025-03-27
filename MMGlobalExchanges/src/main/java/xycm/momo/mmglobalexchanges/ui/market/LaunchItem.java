@@ -84,6 +84,8 @@ public class LaunchItem extends Chest {
         addItem(0, getItem(0));
         addPriceShow(last_price);
         this.price = last_price;
+        this.clear(28, 36);
+        addItemPrice(last_price);
         super.open(player);
     }
 
@@ -274,6 +276,28 @@ public class LaunchItem extends Chest {
         meta.setLore(lore);
         item.setItemMeta(meta);
         this.addItem(14, item);
+    }
+
+    /* 添加显示价格物品 */
+    private void addItemPrice(int price) {
+        for (int i = String.valueOf(price).length() - 1; i >= 0; i--) {
+            int num = Integer.parseInt(String.valueOf(price).substring(i, i + 1));
+            ItemStack item;
+            if (num == 0) {
+                item = new ItemStack(Material.BARRIER);
+                item.setAmount(1);
+                ItemMeta meta = item.getItemMeta();
+                meta.setDisplayName("价格显示物品");
+                item.setItemMeta(meta);
+            } else {
+                item = new ItemStack(Material.GOLD_INGOT);
+                item.setAmount(num);
+                ItemMeta meta = item.getItemMeta();
+                meta.setDisplayName("价格显示物品");
+                item.setItemMeta(meta);
+            }
+            this.addItem(28 + i, item);
+        }
     }
 
     /* 返回 */

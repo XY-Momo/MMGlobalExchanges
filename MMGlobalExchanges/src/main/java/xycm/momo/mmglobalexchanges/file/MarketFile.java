@@ -7,9 +7,7 @@ import xycm.momo.mmglobalexchanges.MMGlobalExchanges;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.TreeMap;
+import java.util.*;
 
 /**
  * 处理市场文件
@@ -130,6 +128,24 @@ public class MarketFile {
 
     /**
      * 获取所有上架中的商品
+     * @return 所有上架中的商品
+     */
+    public List<ItemStack> loadItems() {
+        this.reload();
+        List<ItemStack> items = new ArrayList<>();
+        if (dataConfig.contains("Market")) {
+            for (String key : dataConfig.getConfigurationSection("Market").getKeys(false)) {
+                int id = Integer.parseInt(key);
+                ItemStack item = dataConfig.getItemStack("Market." + id + ".Item");
+                if (item == null) continue;
+                items.add(item);
+            }
+        }
+        return items;
+    }
+
+    /**
+     * 获取所有上架中的商品(带id和价格)
      * @param name 过滤名
      * @return 过滤后商品
      */
@@ -152,9 +168,15 @@ public class MarketFile {
                             Map<Integer, ItemStack> items = new HashMap<>();
                             items.put(price, item);
                             id_items.put(id, items);
+                        } else {
+                            if (item.getType().toString().toLowerCase().contains(name.toLowerCase())) {
+                                Map<Integer, ItemStack> items = new HashMap<>();
+                                items.put(price, item);
+                                id_items.put(id, items);
+                            }
                         }
                     } else {
-                        if (item.getType().toString().contains(name)) {
+                        if (item.getType().toString().toLowerCase().contains(name.toLowerCase())) {
                             Map<Integer, ItemStack> items = new HashMap<>();
                             items.put(price, item);
                             id_items.put(id, items);

@@ -61,6 +61,15 @@ public class Chest {
     }
 
     /**
+     * 移除给出索引物品
+     */
+    public void clear(int start, int end) {
+        for (int i = start; i < end; i++) {
+            removeItem(i);
+        }
+    }
+
+    /**
      * 移除所有物品
      */
     public void clearAll() {

@@ -70,7 +70,7 @@ public class BlackPurchaseConfirm extends Chest {
                     player.sendMessage(MMGlobalExchanges.instance.getConfig().getString("placeholder") + "交易失败，商品已被购买或下架");
                 }
             } else {
-                float money = Float.parseFloat(PlaceholderAPI.setPlaceholders((OfflinePlayer) player, "%vault_eco_balance%"));
+                float money = Float.parseFloat(PlaceholderAPI.setPlaceholders((OfflinePlayer) player, MMGlobalExchanges.instance.getConfig().getString("economy_PAPI")));
                 if (money < price) {
                     if (MMGlobalExchanges.instance.getConfig().getBoolean("info")) {
                         MMGlobalExchanges.blackMarket.setInfo(player, "交易失败，时息不够");
