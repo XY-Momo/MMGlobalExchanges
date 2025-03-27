@@ -91,11 +91,24 @@ B站账号 https://space.bilibili.com/3546615277161153
 
 市场(黑市)搜索界面
 --
+此界面为默认界面，根据物品的名称及材质分类  
+假设两个物品材质为同一个，但是名字不一样(铁砧改名也算不一样)就会出现两个不同的结果
+
+![image](https://github.com/user-attachments/assets/8ab9db05-b86c-4108-b2da-2af44900b596)
+![image](https://github.com/user-attachments/assets/f6cc35b7-a203-4056-ade3-3e35baad96fb)
+
+
+市场(黑市)搜索龙核界面
+--
 此界面配合龙核界面使用(文件中有一份简单的默认配置)，演示如下图  
-不输入字符点确定则是不检索(由于没有做本地化物品名对应Material字典，所以原版物品名无法直接搜名字 比如草方块->GRASS)  
+不输入字符点确定则是不检索  
 
 ![image](https://github.com/user-attachments/assets/2bcd31ae-291f-4cc7-9729-4e27aaa69a82)
-![image](https://github.com/user-attachments/assets/9d43853e-c44c-48fe-a11d-28e92c3a1ec1)
+![image](https://github.com/user-attachments/assets/9d43853e-c44c-48fe-a11d-28e92c3a1ec1)  
+
+-----
+由于没有做本地化物品名检索，所以原版物品名无法直接搜名字 比如草方块->GRASS  
+
 ![image](https://github.com/user-attachments/assets/b02e3b8a-d7c7-4a3c-ab91-734610a01dfa)
 ![image](https://github.com/user-attachments/assets/ed13897b-8a52-4a81-8790-14a3822365d3)
 
