@@ -73,7 +73,7 @@ B站账号 https://space.bilibili.com/3546615277161153
 上方显示商品  
 最下方则是功能区，从左到右分别是上架、搜索、第一页、上一页、个人信息、下一页、最后一页、信息提示、关闭  
 
-![image](https://github.com/user-attachments/assets/dec7483a-23c5-4a97-b9a9-b94c154fac73)  
+![image](https://github.com/user-attachments/assets/8c336a15-71d3-4410-a6c6-2dc1f39d1a5d)  
   
 黑市的信息隐藏  
   
