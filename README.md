@@ -87,7 +87,8 @@ B站账号 https://space.bilibili.com/3546615277161153
 第一格是选中的物品点击后则会返回选择上架商品界面，后面的格子是价格最后位增加0、价格最后位增加1、价格最后位增加2、价格最后位增加3、价格最后位增加4、价格最后位增加5、价格最后位增加6、价格最后位增加7、价格最后位增加8、价格最后位增加9、清除价格、确定、价格退格、信息  
 最后一个屏障是返回
 
-![image](https://github.com/user-attachments/assets/34535112-214b-4d6d-b21e-027e51985de7)
+![image](https://github.com/user-attachments/assets/d6bfe6cc-80c5-4a88-83f1-76bc3de103d8)
+
 
 市场(黑市)搜索界面
 --
