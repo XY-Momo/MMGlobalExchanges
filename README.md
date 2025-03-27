@@ -9,6 +9,7 @@ MMGlobalExchanges
 介绍
 ==
 这是一个用于我的世界1.12.2插件服务器的玩家交易市场插件  
+交易商品可溯源  
 其中界面包括:  
 
 * (黑市)商品总览  
@@ -30,7 +31,7 @@ MMGlobalExchanges
 广告
 ==
 本人参与制作的RPG服务器，目前还在内测中 QQ群:883030156  
-B站账号 https://space.bilibili.com/3546615277161153
+服务器B站账号 https://space.bilibili.com/3546615277161153
 
 指令格式
 ==
