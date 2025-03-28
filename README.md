@@ -4,7 +4,8 @@ MMGlobalExchanges
 
 前置
 ==
-需要vault作为经济系统、PlaceholderAPI及Vault的扩展、DragonCore(如果需要输入搜索的功能的话、文件会附一个简单的例子)
+PlaceholderAPI为前置
+可选择vault作为经济系统、PlaceholderAPI中Vault的扩展、DragonCore(如果需要输入搜索的功能的话、文件会附一个简单的例子)
 
 介绍
 ==
