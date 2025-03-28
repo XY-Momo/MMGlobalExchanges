@@ -117,7 +117,7 @@ PlaceholderAPI为前置
 ![image](https://github.com/user-attachments/assets/2bcd31ae-291f-4cc7-9729-4e27aaa69a82)
 ![image](https://github.com/user-attachments/assets/9d43853e-c44c-48fe-a11d-28e92c3a1ec1)  
 
-由于没有做本地化物品名检索，所以原版物品名无法直接搜名字 比如草方块->GRASS  
+由于没有做本地化物品名检索，所以原版物品名无法直接搜名字 比如草方块->GRASS(grass)  
 
 ![image](https://github.com/user-attachments/assets/b02e3b8a-d7c7-4a3c-ab91-734610a01dfa)
 ![image](https://github.com/user-attachments/assets/ed13897b-8a52-4a81-8790-14a3822365d3)
