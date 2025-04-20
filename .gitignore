@@ -1,0 +1,55 @@
+# Maven 构建目录
+/target/
+*/target/
+dependency-reduced-pom.xml
+
+# 编译产物
+*.class
+*.jar
+*.war
+*.ear
+
+# IDE 配置文件
+.idea/
+*.iml
+.vscode/
+.settings/
+.classpath
+.project
+.factorypath
+
+# 日志文件
+*.log
+logs/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# 临时文件
+*.tmp
+*.bak
+*.swp
+*~.nib
+
+# 构建工具配置缓存
+.gradle/
+.mvn/
+build/
+out/
+
+# 本地配置文件 (如果有)
+local.properties
+
+# 测试报告
+test-output/
+surefire-reports/
+
+# 其他
+*.versionsBackup
+*.releaseBackup
+release.properties
